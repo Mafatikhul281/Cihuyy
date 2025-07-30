@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #loading {
+      background-color: #51576d;
+      color: #c6d0f5;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #loading::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #8caaee, #babbf1, #f2d5cf);
+      animation: loadingBar 2s infinite linear;
+    }
+
+    @keyframes loadingBar {
+      0% {
+        transform: translateX(-100%);
+      }
+      50% {
+        transform: translateX(50%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+  </style>
+  <title>Web Dinamis dari Gemini</title>
+</head>
+<body>
+  <div id="loading">Tunggu Beberapa Detik, Lagi Dibuatin Gemini...</div>
+
+  <script>
+    const apiKey = 'AIzaSyCHA7TW4lgVyejveOxGLuSnq82Ef6GROoY'; // Ganti dengan API Key kamu
+    const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+
+    async function generateAndReplaceHTML() {
+      const prompt = "Buatkan satu halaman HTML penuh yang berisi portfolio .Berisi username(HudaCihuyy),foto profil(dari https://avatars.githubusercontent.com/u/146699593?v=4), link github 'https://github.com/Mafatikhul281', link Facebook 'https://www.facebook.com/share/1CSH99yS5s', email 'mafatifulh@gmail.com', nomor telepon '+62 895 4299 37575', dan lainnya. Desain modern dan berisi gambar dari berbagai source(yang penting ada gambarnya, jangan sampai tidak ada gambarnya), kalau bisa tema catpuccin frappe, boleh bahasa inggris maupun indonesia. Berikan hanya 1 respon HTML lengkap, tanpa penjelasan dan tanpa markdown.";
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': apiKey
+          },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [{ text: prompt }]
+              }
+            ]
+          })
+        });
+
+        const data = await response.json();
+        const html = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        if (html) {
+          document.open();
+          document.write(html);
+          //document.close();
+        } else {
+          document.getElementById('loading').innerText = 'Gagal mengambil kode HTML dari Gemini.';
+        }
+
+      } catch (error) {
+        document.getElementById('loading').innerText = 'Terjadi kesalahan saat mengambil data.';
+        console.error(error);
+      }
+    }
+
+    generateAndReplaceHTML();
+  </script>
+</body>
+</html>
