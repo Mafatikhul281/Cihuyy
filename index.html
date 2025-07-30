@@ -45,11 +45,11 @@
   <div id="loading">Tunggu Beberapa Detik, Lagi Dibuatin Gemini...</div>
 
   <script>
-    const apiKey = 'AIzaSyCHA7TW4lgVyejveOxGLuSnq82Ef6GROoY'; // Ganti dengan API Key kamu
+    const apiKey = 'AIzaSyCHA7TW4lgVyejveOxGLuSnq82Ef6GROoY'; // Ganti dengan API Key mu, Kalo mau pake punyaku ya gapapa sih
     const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
     async function generateAndReplaceHTML() {
-      const prompt = "Buatkan satu halaman HTML penuh yang berisi portfolio .Berisi username(HudaCihuyy),foto profil(dari https://avatars.githubusercontent.com/u/146699593?v=4), link github 'https://github.com/Mafatikhul281', link Facebook 'https://www.facebook.com/share/1CSH99yS5s', email 'mafatifulh@gmail.com', nomor telepon '+62 895 4299 37575', dan lainnya. Desain modern dan berisi gambar dari berbagai source(yang penting ada gambarnya, jangan sampai tidak ada gambarnya), kalau bisa tema catpuccin frappe, boleh bahasa inggris maupun indonesia. Berikan hanya 1 respon HTML lengkap, tanpa penjelasan dan tanpa markdown.";
+      const prompt = "Buatkan satu halaman HTML penuh yang berisi portfolio. Berisi username(HudaCihuyy),foto profil(dari https://avatars.githubusercontent.com/u/146699593?v=4), link github 'https://github.com/Mafatikhul281', link Facebook 'https://www.facebook.com/share/1CSH99yS5s' dengan nama Mafatikhul Huda, email 'mafatifulh@gmail.com', nomor telepon '+62 895 4299 37575', dan lainnya. Desain modern dan berisi gambar yang cocok(akan lebih baik jika pakai gambar dari cdn), dan kalau bisa tema catpuccin frappe, boleh bahasa inggris maupun indonesia. Berikan hanya 1 respon HTML lengkap, tanpa penjelasan dan tanpa markdown.";
 
       try {
         const response = await fetch(endpoint, {
@@ -73,7 +73,7 @@
         if (html) {
           document.open();
           document.write(html);
-          //document.close();
+          document.close();
         } else {
           document.getElementById('loading').innerText = 'Gagal mengambil kode HTML dari Gemini.';
         }
