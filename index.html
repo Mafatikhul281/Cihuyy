@@ -49,7 +49,7 @@
     const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
     async function generateAndReplaceHTML() {
-      const prompt = "Buatkan satu halaman HTML penuh yang berisi portfolio. Berisi username(HudaCihuyy),foto profil(dari https://avatars.githubusercontent.com/u/146699593?v=4), link github 'https://github.com/Mafatikhul281', link Facebook 'https://www.facebook.com/share/1CSH99yS5s' dengan nama Mafatikhul Huda, email 'mafatifulh@gmail.com', nomor telepon '+62 895 4299 37575', dan lainnya. Desain modern dan berisi gambar yang cocok(akan lebih baik jika pakai gambar dari cdn), dan kalau bisa tema catpuccin frappe, pakai tailwindcss cdn dan framework cdn lain, pakai bahasa inggris. Berikan hanya 1 respon HTML lengkap, tanpa penjelasan dan tanpa markdown.";
+      const prompt = "Buatkan satu halaman HTML penuh yang berisi portfolio. Berisi username(HudaCihuyy),foto profil(dari https://avatars.githubusercontent.com/u/146699593?v=4), link github 'https://github.com/Mafatikhul281', link Facebook 'https://www.facebook.com/share/1CSH99yS5s' dengan nama Mafatikhul Huda, email 'mafatifulh@gmail.com', nomor telepon '+62 895 4299 37575', dan lainnya. Desain modern dan berisi gambar yang cocok(pakai gambar dari cdn), dan kalau bisa tema catpuccin frappe, pakai tailwindcss cdn dan framework cdn lain, pakai bahasa inggris. Berikan hanya 1 respon HTML lengkap, tanpa penjelasan dan tanpa markdown.";
 
       try {
         const response = await fetch(endpoint, {
